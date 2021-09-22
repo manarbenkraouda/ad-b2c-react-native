@@ -29,11 +29,11 @@ class ADService {
   logoutAsync = async () => {
     this.tokenResult = {};
     await Promise.all([
-      this.secureStore.deleteItemAsync(this.TokenTypeKey),
-      this.secureStore.deleteItemAsync(this.AccessTokenKey),
-      this.secureStore.deleteItemAsync(this.IdTokenKey),
-      this.secureStore.deleteItemAsync(this.RefreshTokenKey),
-      this.secureStore.deleteItemAsync(this.ExpiresOnKey),
+      this.secureStore.deleteItem(this.TokenTypeKey),
+      this.secureStore.deleteItem(this.AccessTokenKey),
+      this.secureStore.deleteItem(this.IdTokenKey),
+      this.secureStore.deleteItem(this.RefreshTokenKey),
+      this.secureStore.deleteItem(this.ExpiresOnKey),
     ]);
   };
 
@@ -45,11 +45,11 @@ class ADService {
       idToken,
       expiresOn,
     ] = await Promise.all([
-      this.secureStore.getItemAsync(this.TokenTypeKey),
-      this.secureStore.getItemAsync(this.AccessTokenKey),
-      this.secureStore.getItemAsync(this.RefreshTokenKey),
-      this.secureStore.getItemAsync(this.IdTokenKey),
-      this.secureStore.getItemAsync(this.ExpiresOnKey),
+      this.secureStore.getItem(this.TokenTypeKey),
+      this.secureStore.getItem(this.AccessTokenKey),
+      this.secureStore.getItem(this.RefreshTokenKey),
+      this.secureStore.getItem(this.IdTokenKey),
+      this.secureStore.getItem(this.ExpiresOnKey),
     ]);
 
     this.tokenResult = {
@@ -142,11 +142,11 @@ class ADService {
     };
 
     await Promise.all([
-      this.secureStore.setItemAsync(this.TokenTypeKey, res.token_type),
-      this.secureStore.setItemAsync(this.AccessTokenKey, res.access_token),
-      this.secureStore.setItemAsync(this.RefreshTokenKey, res.refresh_token),
-      this.secureStore.setItemAsync(this.IdTokenKey, res.id_token),
-      this.secureStore.setItemAsync(
+      this.secureStore.setItem(this.TokenTypeKey, res.token_type),
+      this.secureStore.setItem(this.AccessTokenKey, res.access_token),
+      this.secureStore.setItem(this.RefreshTokenKey, res.refresh_token),
+      this.secureStore.setItem(this.IdTokenKey, res.id_token),
+      this.secureStore.setItem(
         this.ExpiresOnKey,
         res.expires_on.toString()
       ),
