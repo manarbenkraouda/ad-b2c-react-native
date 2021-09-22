@@ -13,11 +13,6 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
-      - run: npm test -- --coverage
-      - name: Codecov
-        uses: codecov/codecov-action@v1.0.0
-        with:
-          token: ${{secrets.CODECOV_TOKEN}}
   
   publish-npm:
     needs: build
